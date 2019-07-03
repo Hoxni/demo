@@ -1,4 +1,5 @@
-fetch("/api/visits")
+function buttonClick() {
+  fetch("/api/visits")
   .then(response => response.json())
   .then(visits => {
     visits.forEach(visit => {
@@ -8,3 +9,4 @@ fetch("/api/visits")
       document.querySelector('#visits').append(el);
     });
   });
+}

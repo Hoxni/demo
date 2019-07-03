@@ -11,9 +11,9 @@ import java.util.Map;
 @Controller
 public class IndexController{
 
-    private final VisitRepository visitRepository;
+    private final UserRepository visitRepository;
 
-    public IndexController(VisitRepository visitRepository){
+    public IndexController(UserRepository visitRepository){
         this.visitRepository = visitRepository;
     }
 
@@ -22,7 +22,7 @@ public class IndexController{
         Map<String, String> model = new HashMap<>();
         model.put("name", "Dev");
 
-        Visit visit = new Visit();
+        User visit = new User();
         visit.description = String.format("Visited at %s", LocalDateTime.now());
         visitRepository.save(visit);
 
