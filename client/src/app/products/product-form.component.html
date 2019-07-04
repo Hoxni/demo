@@ -1,0 +1,57 @@
+<form *ngIf = "isEditing"
+[formGroup]="form"
+class="form-horizontal col-md-8 col-md-offset-2"
+role="form"
+(ngSubmit)="create(form.value)" novalidate
+>
+<fieldset class="col-md-12">
+  <legend>Add items</legend>
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>type</th>
+        <th>price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input formControlName ="_id"
+        type="number"
+        min="1"
+        class="form-control"
+      >
+       </td>
+        <td><input formControlName ="title"
+        type="text"
+        class="form-control"
+      ></td>
+        <td><input formControlName ="type"
+        type="text"
+        class="form-control"
+      ></td>
+        <td><input formControlName ="price"
+        type="number"
+        class="form-control"
+      ></td>
+      </tr>
+    </tbody>
+  </table>
+</fieldset>
+
+<button
+  type="submit"
+  class="pull-right btn btn-success hvr-grow col-md-3"
+  style="margin-bottom: 15px"
+>Create</button>
+</form>
+
+<app-products-table [products]="products" [selectable]="isEditing" [select]="selectProduct"></app-products-table>
+
+<button (click)="cancel()" class="btn btn-warning hvr-grow col-md-5" style="margin-bottom: 15px">
+    <span class="glyphicon glyphicon-remove"></span> Cancel
+  </button>
+<button (click)="save()" class="btn btn-primary hvr-grow col-md-5 pull-right" style="margin-bottom: 15px">
+    <span class="glyphicon glyphicon-floppy-disk"></span> {{buttonText}}
+</button>
