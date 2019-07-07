@@ -1,5 +1,10 @@
 package com.example.demo;
 
+import com.example.demo.order.Client;
+import com.example.demo.order.OrderItem;
+import com.example.demo.order.OrderObject;
+import com.example.demo.product.Product;
+import com.example.demo.repositories.OrderRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +25,7 @@ public class DemoApplication {
         return args -> {
             Stream.of("1", "2", "3", "4", "5").forEach(name -> {
                 Client client = new Client(name, name);
-                Product product = new Product(name, name, 1);
+                Product product = new Product(name, "phone", 1);
                 OrderItem orderItem = new OrderItem(product, 1);
                 OrderObject order = new OrderObject(client, 1, Collections.singletonList(orderItem));
                 orderRepository.save(order);

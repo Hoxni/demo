@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
+import com.example.demo.user.User;
+import com.example.demo.repositories.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -16,14 +18,20 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public boolean login(@RequestBody User user){
+    public User login(@RequestBody User user){
         System.out.println("login: " + user.getUsername() + " pass: " + user.getPassword());
-        return user.getUsername().equals("order_manager") && user.getPassword().equals("pass");
+        //return user.getUsername().equals("order_manager") && user.getPassword().equals("pass");
+        return new User(user.getUsername(), user.getPassword(), "order-manager", "a", "a");
     }
 
     @GetMapping("/users/me")
     public Principal user(Principal user) {
         return user;
+    }
+
+    @GetMapping("/logout")
+    public User logout(){
+        return new User();
     }
 
     @GetMapping("/users")

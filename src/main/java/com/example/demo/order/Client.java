@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.order;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;

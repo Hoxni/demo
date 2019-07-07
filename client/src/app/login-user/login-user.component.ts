@@ -44,11 +44,14 @@ export class LoginUserComponent implements OnInit {
     this.authenticationService.loadCurrentUser().subscribe(
       () => this.router.navigate([this.returnUrl]),
       () => this.isRender = true);
+
+    console.log('ngOnInit here');
   }
 
   login() {
 
     console.log('name ' + this.username.value);
+    console.log('login here')
 
     if(this.username.value === 'order_manager'){
       this.returnUrl = 'orders'

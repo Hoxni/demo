@@ -1,9 +1,8 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.order.OrderObject;
+import com.example.demo.repositories.OrderRepository;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -20,5 +19,10 @@ public class OrderController {
     public Iterable<OrderObject> getOrders(){
         orderRepository.findAll().forEach(System.out::println);
         return orderRepository.findAll();
+    }
+
+    @PostMapping("/orders")
+    public void addOrder(@RequestBody OrderObject order){
+        orderRepository.save(order);
     }
 }
