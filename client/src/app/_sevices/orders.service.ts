@@ -39,7 +39,7 @@ export class OrdersService {
     const { client, products, summaryPrice } = order;
     const items = products.map(({ id, count }) => ({ product: id, count }));
 
-    return this.http.post(`${SettingsService.apiUrl}/orders`, { client, items, summaryPrice })
+    return this.http.post(`${SettingsService.apiUrl}/orders`, { client, products: items, summaryPrice })
       .map((response: Response) => {
         console.log(response);
       })

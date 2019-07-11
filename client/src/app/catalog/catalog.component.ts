@@ -39,6 +39,10 @@ export class CatalogComponent {
     });
   }
 
+  selectProduct(p: Product) {
+    p.selected = !p.selected;
+  }
+
   canNext = () => !this.activeCatalog.products.filter(p => p.selected).length;
 
   canEdit = () => CatalogGuard.check(this.user);

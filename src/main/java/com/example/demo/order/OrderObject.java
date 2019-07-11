@@ -25,19 +25,19 @@ public class OrderObject {
         this.products = new ArrayList<>();
     }
 
-    public OrderObject(Client client, int summaryPrice, List<OrderItem> products) {
+    public OrderObject(Client client, int summaryPrice, List<OrderItem> items) {
         this.client = client;
         this.summaryPrice = summaryPrice;
-        this.products = products;
+        this.products = items;
     }
 
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         for (OrderItem i: products) {
-            s.append(i.toString()).append(" ");
+            s.append("\t").append(i.toString()).append("\n");
         }
-        return id + " " + client.toString() + " " + summaryPrice + " " + s;
+        return "OrderObject id: " + id + " client: " + client.toString() + " sumPrice: " + summaryPrice + " products: \n" + s;
     }
 
     public Long getId() {

@@ -21,7 +21,7 @@ public class UserController {
     public User login(@RequestBody User user){
         System.out.println("login: " + user.getUsername() + " pass: " + user.getPassword());
         //return user.getUsername().equals("order_manager") && user.getPassword().equals("pass");
-        return new User(user.getUsername(), user.getPassword(), "order-manager", "a", "a");
+        return new User(user.getUsername(), user.getPassword(), "product-manager", "a", "a");
     }
 
     @GetMapping("/users/me")

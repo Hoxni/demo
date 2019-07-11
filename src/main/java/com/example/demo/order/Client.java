@@ -25,6 +25,11 @@ public class Client{
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Client " + name + " " + email;
+    }
+
     public String getEmail() {
         return email;
     }

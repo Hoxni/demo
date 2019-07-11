@@ -2,7 +2,9 @@ package com.example.demo.order;
 
 import com.example.demo.product.Product;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class OrderItem {
@@ -11,8 +13,7 @@ public class OrderItem {
     @GeneratedValue
     public Long id;
 
-    //@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Product.class)
-    //private Product product;
+    private Long product;
     private String title;
     private String type;
     private int price;
@@ -23,18 +24,22 @@ public class OrderItem {
         this.type = "";
         this.price = 0;
         this.count = 0;
+        //this.productRepository = null;
+        System.out.println("Zero orderItem constructor");
     }
 
     public OrderItem(Product product, int count) {
+        this.product = product.getId();
         this.title = product.getTitle();
         this.type = product.getType();
         this.price = product.getPrice();
         this.count = count;
+        System.out.println("First constructor: " + toString());
     }
 
     @Override
     public String toString() {
-        return id + " " + title + " " + type + " " + price + " " + count;
+        return "OrderItem id: " + id + " productId: " + product + " title: " + title + " type: " + type + " price: " + price + " count: " + count;
     }
 
     public Long getId() {
@@ -75,5 +80,13 @@ public class OrderItem {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public Long getProduct() {
+        return product;
+    }
+
+    public void setProduct(Long product) {
+        this.product = product;
     }
 }
