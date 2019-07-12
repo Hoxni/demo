@@ -1,10 +1,7 @@
 package com.example.demo.controllers;
 
-import com.example.demo.order.OrderItem;
 import com.example.demo.order.OrderObject;
-import com.example.demo.product.Product;
-import com.example.demo.repositories.OrderRepository;
-import com.example.demo.repositories.ProductRepository;
+import com.example.demo.services.OrderService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,28 +9,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class OrderController {
 
-    private final OrderRepository orderRepository;
-    private final ProductRepository productRepository;
+    private final OrderService orderService;
 
-    public OrderController(OrderRepository orderRepository, ProductRepository productRepository) {
-        this.orderRepository = orderRepository;
-        this.productRepository = productRepository;
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
     }
 
     @GetMapping("/orders")
     public Iterable<OrderObject> getOrders() {
-        orderRepository.findAll().forEach(System.out::println);
-        return orderRepository.findAll();
+        orderService.getOrders().forEach(System.out::println);
+        return orderService.getOrders();
     }
 
     @PostMapping("/orders")
     public void addOrder(@RequestBody OrderObject order){
-        for (OrderItem o: order.getProducts()) {
-            Product product = productRepository.findById(o.getProduct()).get();
-            o.setPrice(product.getPrice());
-            o.setTitle(product.getTitle());
-            o.setType(product.getType());
-        }
-        orderRepository.save(order);
+        orderService.save(order);
     }
 }

@@ -39,7 +39,7 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "OrderItem id: " + id + " productId: " + product + " title: " + title + " type: " + type + " price: " + price + " count: " + count;
+        return "OrderItem( id: " + id + ", productId: " + product + ", title: " + title + ", type: " + type + ", price: " + price + ", count: " + count + " )";
     }
 
     public Long getId() {

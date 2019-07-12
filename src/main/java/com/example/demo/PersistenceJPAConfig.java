@@ -1,8 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.order.OrderItem;
-import com.example.demo.order.ProductService;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 

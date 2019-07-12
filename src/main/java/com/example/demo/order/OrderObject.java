@@ -37,7 +37,7 @@ public class OrderObject {
         for (OrderItem i: products) {
             s.append("\t").append(i.toString()).append("\n");
         }
-        return "OrderObject id: " + id + " client: " + client.toString() + " sumPrice: " + summaryPrice + " products: \n" + s;
+        return "OrderObject( id: " + id + ", client: " + client.toString() + ", sumPrice: " + summaryPrice + ", products: \n" + s + " )";
     }
 
     public Long getId() {

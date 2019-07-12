@@ -3,6 +3,7 @@ package com.example.demo.product;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Product {
@@ -28,8 +29,23 @@ public class Product {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return getPrice() == product.getPrice() &&
+                Objects.equals(getTitle(), product.getTitle()) &&
+                Objects.equals(getType(), product.getType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTitle(), getType(), getPrice());
+    }
+
+    @Override
     public String toString() {
-        return id + " " + title + " " + type + " " + price;
+        return "Product( id: " + id + ", title: " + title + ", type: " + type + ", price: " + price + " )";
     }
 
     public Long getId() {

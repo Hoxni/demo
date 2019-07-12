@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.services.UserService;
 import com.example.demo.user.User;
 import com.example.demo.repositories.UserRepository;
 import org.springframework.web.bind.annotation.*;
@@ -11,17 +12,15 @@ import java.security.Principal;
 @RequestMapping("/auth")
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository){
-        this.userRepository = userRepository;
+    public UserController(UserService userService){
+        this.userService = userService;
     }
 
     @RequestMapping("/login")
-    public User login(@RequestBody User user){
-        System.out.println("login: " + user.getUsername() + " pass: " + user.getPassword());
-        //return user.getUsername().equals("order_manager") && user.getPassword().equals("pass");
-        return new User(user.getUsername(), user.getPassword(), "product-manager", "a", "a");
+    public User login(@RequestBody User user) throws Exception{
+        return userService.login(user);
     }
 
     @GetMapping("/users/me")
@@ -34,7 +33,7 @@ public class UserController {
         return new User();
     }
 
-    @GetMapping("/users")
+    /*@GetMapping("/users")
     public Iterable<User> getUsers(){
         return userRepository.findAll();
     }
@@ -42,5 +41,5 @@ public class UserController {
     @PostMapping("/users")
     void addUser(@RequestBody User user){
         userRepository.save(user);
-    }
+    }*/
 }

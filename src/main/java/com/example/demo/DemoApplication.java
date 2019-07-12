@@ -8,6 +8,8 @@ import com.example.demo.product.Product;
 import com.example.demo.repositories.CatalogRepository;
 import com.example.demo.repositories.OrderRepository;
 import com.example.demo.repositories.ProductRepository;
+import com.example.demo.repositories.UserRepository;
+import com.example.demo.user.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,8 +26,13 @@ public class DemoApplication {
     }
 
     @Bean
-    CommandLineRunner init(OrderRepository orderRepository, ProductRepository productRepository, CatalogRepository catalogRepository) {
+    CommandLineRunner init(OrderRepository orderRepository, ProductRepository productRepository, CatalogRepository catalogRepository, UserRepository userRepository) {
         return args -> {
+            Stream.of("order-manager", "product-manager", "catalog-manager").forEach(value -> {
+                User user = new User(value, "1", value, "a", "a");
+                userRepository.save(user);
+            });
+
             Client client = new Client("client@mail", "client");
             Product product = new Product("product", "phone", 1);
             OrderItem orderItem = new OrderItem(product, 1);
