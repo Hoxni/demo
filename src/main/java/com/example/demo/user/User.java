@@ -72,4 +72,8 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public static User newInstance() {
+        return new User();
+    }
 }

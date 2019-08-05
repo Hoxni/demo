@@ -25,6 +25,6 @@ public class UserService {
                 return ResponseEntity.ok(correctUser);
             }
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new User());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(User.newInstance());
     }
 }

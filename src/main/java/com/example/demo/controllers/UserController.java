@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping("/logout")
     public User logout(){
-        return new User();
+        return User.newInstance();
     }
 
 }
