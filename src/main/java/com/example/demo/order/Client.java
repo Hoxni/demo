@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.order;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -23,6 +23,11 @@ public class Client{
     public Client(String email, String name) {
         this.email = email;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Client " + name + " " + email;
     }
 
     public String getEmail() {

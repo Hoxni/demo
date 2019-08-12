@@ -38,20 +38,13 @@ export class ProductEditComponent {
     this.create = this.create.bind(this);
   }
 
-  checkId(){
-    const _id = this.form.controls['_id'].value;
-    return this.products.some(p => p.id === _id);
-  }
-
   create() {
-    const id = this.form.controls['_id'].value;
+    const id = null;// = this.form.controls['_id'].value;
     const title = this.form.controls['title'].value;
     const type = this.form.controls['type'].value;
     const price = this.form.controls['price'].value;
 
-    if(!this.checkId()){
       this.products.push(new Product({ id, title, type, price }));// = this.products.push()
-    }
 
     // this.productsService.create(new Product({ id, title, type, price })).subscribe(
     //   () => {

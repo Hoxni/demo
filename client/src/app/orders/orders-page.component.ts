@@ -17,7 +17,7 @@ import { OrdersGuard } from '../_guards/orders.guard';
       [link]="'create'"
       [iconClass]="'glyphicon glyphicon-plus-sign'"
     ></app-circle-btn>
-  `,
+  `
 })
 export class OrdersPageComponent {
   orders: Array<Order>;

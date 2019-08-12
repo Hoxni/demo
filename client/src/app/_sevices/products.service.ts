@@ -60,9 +60,8 @@ export class ProductsService {
 
   create(product: Product) {
     const { id, title, type, price } = product;
-    const _id = id;
 
-    return this.http.post(`${SettingsService.apiUrl}/products/`, { _id, title, type, price })
+    return this.http.post(`${SettingsService.apiUrl}/products/`, { id, title, type, price })
       .map((response: Response) => {
         console.log(response);
       })
